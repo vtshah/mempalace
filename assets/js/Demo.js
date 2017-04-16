@@ -94,7 +94,8 @@ Demo.prototype.initScene = function() {
     // var freeCamera = new BABYLON.FreeCamera("fCamera",
     //     new BABYLON.Vector3(30, 50, 1), this.scene);
 
-    var freeCamera = new BABYLON.WebVRFreeCamera("WVR", new BABYLON.Vector3(30, 50, 1), this.scene);
+    var freeCamera = new BABYLON.VRDeviceOrientationFreeCamera("fCamera", new BABYLON.Vector3(30, 50, 1), this.scene);
+    //var freeCamera = new BABYLON.WebVRFreeCamera("WVR", new BABYLON.Vector3(30, 50, 1), this.scene);
     //BABYLON.VRDeviceOrientationFreeCamera("fCamera", new BABYLON.Vector3(30, 50, 1), this.scene);
 
     this.scene.activeCamera = freeCamera;
