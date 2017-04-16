@@ -2,17 +2,17 @@ var VERSION = 1.0,
     AUTHOR = "Brian Servia";
 
 
-//1,37,50,75=frame, 
+//1,37,50,75=frame,
 
 //30=bottomtv,31,73,81=tv,8,69=shelftoptv
 
-//3,12,6,7,38,43,57,62,64,77,82,87,101,104=lcouch, 
-//9,15,19,22,24,32,39,65,74,90,93,96,97,111=rcouch, 
+//3,12,6,7,38,43,57,62,64,77,82,87,101,104=lcouch,
+//9,15,19,22,24,32,39,65,74,90,93,96,97,111=rcouch,
 
-//2,10,28,47,99,106=rtable, 
+//2,10,28,47,99,106=rtable,
 //16,36,68,78,84,95=ltable,
 
-//4,112,11,14,49,52,71,103=bathroom, 
+//4,112,11,14,49,52,71,103=bathroom,
 
 
 //27=backwallbed,46=door,26,41,100=bathroomwall,58=allwalls
@@ -21,10 +21,10 @@ var VERSION = 1.0,
 //13,40=lamptop,53,70,85,88=lampstand,
 //51=bowl,18=tableunderbowl
 
-//89=mirrortopbed,94,108=bed,23,29=pillow, 
+//89=mirrortopbed,94,108=bed,23,29=pillow,
 
 
-//25,35,42,44,45,59,60,79,80,86,102,105,110=chair2, 
+//25,35,42,44,45,59,60,79,80,86,102,105,110=chair2,
 //5,17,20,21,33,34,48,56,61,76,91,92,109=chair1,
 
 
@@ -94,8 +94,8 @@ Demo.prototype.initScene = function() {
     // var freeCamera = new BABYLON.FreeCamera("fCamera",
     //     new BABYLON.Vector3(30, 50, 1), this.scene);
 
-    var freeCamera = new 
-    BABYLON.VRDeviceOrientationFreeCamera("fCamera", new BABYLON.Vector3(30, 50, 1), this.scene);
+    var freeCamera = new BABYLON.WebVRFreeCamera("WVR", new BABYLON.Vector3(30, 50, 1), this.scene);
+    //BABYLON.VRDeviceOrientationFreeCamera("fCamera", new BABYLON.Vector3(30, 50, 1), this.scene);
 
     this.scene.activeCamera = freeCamera;
 
@@ -107,7 +107,7 @@ Demo.prototype.initScene = function() {
 
     this.initCollision(this.scene);
     console.log(this.scene.pointerX);
-    //--------------------------------------------------------------------------------    
+    //--------------------------------------------------------------------------------
     //make box, and project ray from inside
     //var box = new BABYLON.Mesh.CreateBox("box1", 4, this.scene);
     /*
@@ -116,22 +116,22 @@ Demo.prototype.initScene = function() {
 
         var origin = box.position;
         console.log(origin);
-        
-        var forward = new BABYLON.Vector3(0,0,1);       
+
+        var forward = new BABYLON.Vector3(0,0,1);
         var m = cam.getWorldMatrix();
         var v = BABYLON.Vector3.TransformCoordinates(forward, m);
         forward = v;
         var direction = forward.subtract(origin);
         direction = BABYLON.Vector3.Normalize(direction);
-        
+
         var length = 100;
 
         var ray = new BABYLON.Ray(origin, direction, length);
-        
+
         //BABYLON.rayHelper.CreateAndShow(ray, this.scene, new BABYLON.Color3(1,1,.1));
         //rayHelper.show(scene);
         var rayHelper = new BABYLON.RayHelper(ray);
-        
+
 
         rayHelper.attachToMesh(cam, direction, origin, length);
         //ray.show(this.scene, new BABYLON.Color3(1, 1, 0.1));
