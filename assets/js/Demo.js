@@ -100,10 +100,11 @@ Demo.prototype.initScene = function() {
 
     this.scene.activeCamera = freeCamera;
 
-    this.scene.activeCamera.attachControl(this.engine.getRenderingCanvas());
+    //this.scene.activeCamera.attachControl(this.engine.getRenderingCanvas());
+
     this.scene.onPointerDown = function() {
         scene.onPointerDown = undefined
-        camera.attachControl(canvas, true);
+        camera.attachControl(this.engine.getRenderingCanvas(), true);
     }
     var cam = this.scene.activeCamera;
 
