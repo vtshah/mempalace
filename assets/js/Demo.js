@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
 }, false);
 
 
-
 var Demo = function(canvasId) {
 
     var canvas = document.getElementById(canvasId);
@@ -101,11 +100,18 @@ Demo.prototype.initScene = function() {
     this.scene.activeCamera = freeCamera;
 
     //this.scene.activeCamera.attachControl(this.engine.getRenderingCanvas());
+    let button = document.getElementById('vrButton');
 
-    this.scene.onPointerDown = function() {
-        scene.onPointerDown = undefined
-        camera.attachControl(this.engine.getRenderingCanvas(), true);
+    function attachWebVR() {
+        camera.attachControl(canvas, true);
+        window.removeEventListener('click', attachWebVR, false);
     }
+
+    button.addEventListener('click', attachWebVR, false);
+    // this.scene.onPointerDown = function() {
+    //     scene.onPointerDown = undefined
+    //     camera.attachControl(this.engine.getRenderingCanvas(), true);
+    // }
     var cam = this.scene.activeCamera;
 
     var target = this.scene.meshes[108];
