@@ -94,13 +94,17 @@ Demo.prototype.initScene = function() {
     // var freeCamera = new BABYLON.FreeCamera("fCamera",
     //     new BABYLON.Vector3(30, 50, 1), this.scene);
 
-    var freeCamera = new BABYLON.VRDeviceOrientationFreeCamera("fCamera", new BABYLON.Vector3(30, 50, 1), this.scene);
-    //var freeCamera = new BABYLON.WebVRFreeCamera("WVR", new BABYLON.Vector3(30, 50, 1), this.scene);
+    //var freeCamera = new BABYLON.VRDeviceOrientationFreeCamera("fCamera", new BABYLON.Vector3(30, 50, 1), this.scene);
+    var freeCamera = new BABYLON.WebVRFreeCamera("WVR", new BABYLON.Vector3(30, 50, 1), this.scene);
     //BABYLON.VRDeviceOrientationFreeCamera("fCamera", new BABYLON.Vector3(30, 50, 1), this.scene);
 
     this.scene.activeCamera = freeCamera;
 
     this.scene.activeCamera.attachControl(this.engine.getRenderingCanvas());
+    this.scene.onPointerDown = function() {
+        scene.onPointerDown = undefined
+        camera.attachControl(canvas, true);
+    }
     var cam = this.scene.activeCamera;
 
     var target = this.scene.meshes[108];
